@@ -35,12 +35,11 @@
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[33.71083382033855,-119.0261972397109],[34.94812622642659,-117.54775676904838]]);
+        }).fitBounds([[33.25608745000001,-119.41879645163935],[35.06156455000008,-117.21867954836053]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
-            map.setMaxBounds(map.getBounds());
         }
         var layer_OpenStreetMap_0 = L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             opacity: 1.0
@@ -189,7 +188,7 @@
         }
 
         function style_LAPrevalenceZIPCodeRate_1_0(feature) {
-            if (feature.properties['Prevalen_2'] >= -3.000000 && feature.properties['Prevalen_2'] <= 2150.200000 ) {
+            if (feature.properties['Prevalen_2'] >= 18.000000 && feature.properties['Prevalen_2'] <= 2167.000000 ) {
                 return {
                 pane: 'pane_LAPrevalenceZIPCodeRate_1',
                 opacity: 1,
@@ -203,7 +202,7 @@
                 fillColor: 'rgba(255,255,255,0.75)',
             }
             }
-            if (feature.properties['Prevalen_2'] >= 2150.200000 && feature.properties['Prevalen_2'] <= 4303.400000 ) {
+            if (feature.properties['Prevalen_2'] >= 2167.000000 && feature.properties['Prevalen_2'] <= 4316.000000 ) {
                 return {
                 pane: 'pane_LAPrevalenceZIPCodeRate_1',
                 opacity: 1,
@@ -217,7 +216,7 @@
                 fillColor: 'rgba(200,222,248,0.75)',
             }
             }
-            if (feature.properties['Prevalen_2'] >= 4303.400000 && feature.properties['Prevalen_2'] <= 6456.600000 ) {
+            if (feature.properties['Prevalen_2'] >= 4316.000000 && feature.properties['Prevalen_2'] <= 6465.000000 ) {
                 return {
                 pane: 'pane_LAPrevalenceZIPCodeRate_1',
                 opacity: 1,
@@ -231,7 +230,7 @@
                 fillColor: 'rgba(144,188,240,0.75)',
             }
             }
-            if (feature.properties['Prevalen_2'] >= 6456.600000 && feature.properties['Prevalen_2'] <= 8609.800000 ) {
+            if (feature.properties['Prevalen_2'] >= 6465.000000 && feature.properties['Prevalen_2'] <= 8614.000000 ) {
                 return {
                 pane: 'pane_LAPrevalenceZIPCodeRate_1',
                 opacity: 1,
@@ -245,7 +244,7 @@
                 fillColor: 'rgba(89,154,233,0.75)',
             }
             }
-            if (feature.properties['Prevalen_2'] >= 8609.800000 && feature.properties['Prevalen_2'] <= 10763.000000 ) {
+            if (feature.properties['Prevalen_2'] >= 8614.000000 && feature.properties['Prevalen_2'] <= 10763.000000 ) {
                 return {
                 pane: 'pane_LAPrevalenceZIPCodeRate_1',
                 opacity: 1,
@@ -335,7 +334,7 @@
         }
 
         function style_LANewDiagnoses5yearcumulativecases_2_0(feature) {
-            if (feature.properties['New_diag_2'] >= -3.000000 && feature.properties['New_diag_2'] <= 52.400000 ) {
+            if (feature.properties['New_diag_2'] >= 5.000000 && feature.properties['New_diag_2'] <= 58.800000 ) {
                 return {
                 pane: 'pane_LANewDiagnoses5yearcumulativecases_2',
                 opacity: 1,
@@ -349,7 +348,7 @@
                 fillColor: 'rgba(255,255,255,0.75)',
             }
             }
-            if (feature.properties['New_diag_2'] >= 52.400000 && feature.properties['New_diag_2'] <= 107.800000 ) {
+            if (feature.properties['New_diag_2'] >= 58.800000 && feature.properties['New_diag_2'] <= 112.600000 ) {
                 return {
                 pane: 'pane_LANewDiagnoses5yearcumulativecases_2',
                 opacity: 1,
@@ -363,7 +362,7 @@
                 fillColor: 'rgba(254,192,203,0.75)',
             }
             }
-            if (feature.properties['New_diag_2'] >= 107.800000 && feature.properties['New_diag_2'] <= 163.200000 ) {
+            if (feature.properties['New_diag_2'] >= 112.600000 && feature.properties['New_diag_2'] <= 166.400000 ) {
                 return {
                 pane: 'pane_LANewDiagnoses5yearcumulativecases_2',
                 opacity: 1,
@@ -377,7 +376,7 @@
                 fillColor: 'rgba(252,129,150,0.75)',
             }
             }
-            if (feature.properties['New_diag_2'] >= 163.200000 && feature.properties['New_diag_2'] <= 218.600000 ) {
+            if (feature.properties['New_diag_2'] >= 166.400000 && feature.properties['New_diag_2'] <= 220.200000 ) {
                 return {
                 pane: 'pane_LANewDiagnoses5yearcumulativecases_2',
                 opacity: 1,
@@ -391,7 +390,7 @@
                 fillColor: 'rgba(251,66,97,0.75)',
             }
             }
-            if (feature.properties['New_diag_2'] >= 218.600000 && feature.properties['New_diag_2'] <= 274.000000 ) {
+            if (feature.properties['New_diag_2'] >= 220.200000 && feature.properties['New_diag_2'] <= 274.000000 ) {
                 return {
                 pane: 'pane_LANewDiagnoses5yearcumulativecases_2',
                 opacity: 1,
@@ -417,7 +416,7 @@
         });
         bounds_group.addLayer(layer_LANewDiagnoses5yearcumulativecases_2);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'LA New Diagnoses: 5-year cumulative cases<br /><table><tr><td style="text-align: center;"><img src="legend/LANewDiagnoses5yearcumulativecases_2_3520.png" /></td><td> -3 - 52 </td></tr><tr><td style="text-align: center;"><img src="legend/LANewDiagnoses5yearcumulativecases_2_521081.png" /></td><td> 52 - 108 </td></tr><tr><td style="text-align: center;"><img src="legend/LANewDiagnoses5yearcumulativecases_2_1081632.png" /></td><td> 108 - 163 </td></tr><tr><td style="text-align: center;"><img src="legend/LANewDiagnoses5yearcumulativecases_2_1632193.png" /></td><td> 163 - 219 </td></tr><tr><td style="text-align: center;"><img src="legend/LANewDiagnoses5yearcumulativecases_2_2192744.png" /></td><td> 219 - 274 </td></tr></table>': layer_LANewDiagnoses5yearcumulativecases_2,'LA Prevalence: ZIP Code Rate<br /><table><tr><td style="text-align: center;"><img src="legend/LAPrevalenceZIPCodeRate_1_321500.png" /></td><td> -3 - 2150 </td></tr><tr><td style="text-align: center;"><img src="legend/LAPrevalenceZIPCodeRate_1_215043031.png" /></td><td> 2150 - 4303 </td></tr><tr><td style="text-align: center;"><img src="legend/LAPrevalenceZIPCodeRate_1_430364572.png" /></td><td> 4303 - 6457 </td></tr><tr><td style="text-align: center;"><img src="legend/LAPrevalenceZIPCodeRate_1_645786103.png" /></td><td> 6457 - 8610 </td></tr><tr><td style="text-align: center;"><img src="legend/LAPrevalenceZIPCodeRate_1_8610107634.png" /></td><td> 8610 - 10763 </td></tr></table>': layer_LAPrevalenceZIPCodeRate_1,"OpenStreetMap": layer_OpenStreetMap_0,}).addTo(map);L.control.scale({position: 'bottomleft', maxWidth: 100, metric: true, imperial: false, updateWhenIdle: false}).addTo(map);
+        L.control.layers(baseMaps,{'LA New Diagnoses: 5-year cumulative cases<br /><table><tr><td style="text-align: center;"><img src="legend/LANewDiagnoses5yearcumulativecases_2_5590.png" /></td><td> 5 - 59 </td></tr><tr><td style="text-align: center;"><img src="legend/LANewDiagnoses5yearcumulativecases_2_591131.png" /></td><td> 59 - 113 </td></tr><tr><td style="text-align: center;"><img src="legend/LANewDiagnoses5yearcumulativecases_2_1131662.png" /></td><td> 113 - 166 </td></tr><tr><td style="text-align: center;"><img src="legend/LANewDiagnoses5yearcumulativecases_2_1662203.png" /></td><td> 166 - 220 </td></tr><tr><td style="text-align: center;"><img src="legend/LANewDiagnoses5yearcumulativecases_2_2202744.png" /></td><td> 220 - 274 </td></tr></table>': layer_LANewDiagnoses5yearcumulativecases_2,'LA Prevalence: ZIP Code Rate<br /><table><tr><td style="text-align: center;"><img src="legend/LAPrevalenceZIPCodeRate_1_1821670.png" /></td><td> 18 - 2167 </td></tr><tr><td style="text-align: center;"><img src="legend/LAPrevalenceZIPCodeRate_1_216743161.png" /></td><td> 2167 - 4316 </td></tr><tr><td style="text-align: center;"><img src="legend/LAPrevalenceZIPCodeRate_1_431664652.png" /></td><td> 4316 - 6465 </td></tr><tr><td style="text-align: center;"><img src="legend/LAPrevalenceZIPCodeRate_1_646586143.png" /></td><td> 6465 - 8614 </td></tr><tr><td style="text-align: center;"><img src="legend/LAPrevalenceZIPCodeRate_1_8614107634.png" /></td><td> 8614 - 10763 </td></tr></table>': layer_LAPrevalenceZIPCodeRate_1,"OpenStreetMap": layer_OpenStreetMap_0,}).addTo(map);L.control.scale({position: 'bottomleft', maxWidth: 100, metric: true, imperial: false, updateWhenIdle: false}).addTo(map);
         setBounds();
         </script>
     </body>
