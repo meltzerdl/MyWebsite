@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/SFNewDiagnoses5yearcumulativecases_1.js"></script>
+        <script src="data/SFPrevalenceZIPCodeRate_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[37.70202754639399,-122.51842547499999],[37.837910339443255,-122.35284152499977]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            map.setMaxBounds(map.getBounds());
+        }
+        var layer_OpenStreetMap_0 = L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            opacity: 1.0
+        });
+        layer_OpenStreetMap_0.addTo(map);
+        map.addLayer(layer_OpenStreetMap_0);
+        function pop_SFNewDiagnoses5yearcumulativecases_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ZCTA5CE10'] !== null ? Autolinker.link(String(feature.properties['ZCTA5CE10'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AFFGEOID10'] !== null ? Autolinker.link(String(feature.properties['AFFGEOID10'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GEOID10'] !== null ? Autolinker.link(String(feature.properties['GEOID10'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ALAND10'] !== null ? Autolinker.link(String(feature.properties['ALAND10'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AWATER10'] !== null ? Autolinker.link(String(feature.properties['AWATER10'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_dia'] !== null ? Autolinker.link(String(feature.properties['SF_New_dia'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d_1'] !== null ? Autolinker.link(String(feature.properties['SF_New_d_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d_2'] !== null ? Autolinker.link(String(feature.properties['SF_New_d_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d_3'] !== null ? Autolinker.link(String(feature.properties['SF_New_d_3'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d_4'] !== null ? Autolinker.link(String(feature.properties['SF_New_d_4'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d_5'] !== null ? Autolinker.link(String(feature.properties['SF_New_d_5'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d_6'] !== null ? Autolinker.link(String(feature.properties['SF_New_d_6'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d_7'] !== null ? Autolinker.link(String(feature.properties['SF_New_d_7'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d_8'] !== null ? Autolinker.link(String(feature.properties['SF_New_d_8'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d_9'] !== null ? Autolinker.link(String(feature.properties['SF_New_d_9'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d10'] !== null ? Autolinker.link(String(feature.properties['SF_New_d10'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d11'] !== null ? Autolinker.link(String(feature.properties['SF_New_d11'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d12'] !== null ? Autolinker.link(String(feature.properties['SF_New_d12'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_New_d13'] !== null ? Autolinker.link(String(feature.properties['SF_New_d13'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_SFNewDiagnoses5yearcumulativecases_1_0(feature) {
+            if (feature.properties['SF_New_d_2'] >= -1.000000 && feature.properties['SF_New_d_2'] <= 35.800000 ) {
+                return {
+                pane: 'pane_SFNewDiagnoses5yearcumulativecases_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.75)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,0.75)',
+            }
+            }
+            if (feature.properties['SF_New_d_2'] >= 35.800000 && feature.properties['SF_New_d_2'] <= 72.600000 ) {
+                return {
+                pane: 'pane_SFNewDiagnoses5yearcumulativecases_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.75)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,191,191,0.75)',
+            }
+            }
+            if (feature.properties['SF_New_d_2'] >= 72.600000 && feature.properties['SF_New_d_2'] <= 109.400000 ) {
+                return {
+                pane: 'pane_SFNewDiagnoses5yearcumulativecases_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.75)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,128,128,0.75)',
+            }
+            }
+            if (feature.properties['SF_New_d_2'] >= 109.400000 && feature.properties['SF_New_d_2'] <= 146.200000 ) {
+                return {
+                pane: 'pane_SFNewDiagnoses5yearcumulativecases_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.75)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,64,64,0.75)',
+            }
+            }
+            if (feature.properties['SF_New_d_2'] >= 146.200000 && feature.properties['SF_New_d_2'] <= 183.000000 ) {
+                return {
+                pane: 'pane_SFNewDiagnoses5yearcumulativecases_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.75)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,0,0.75)',
+            }
+            }
+        }
+        map.createPane('pane_SFNewDiagnoses5yearcumulativecases_1');
+        map.getPane('pane_SFNewDiagnoses5yearcumulativecases_1').style.zIndex = 401;
+        map.getPane('pane_SFNewDiagnoses5yearcumulativecases_1').style['mix-blend-mode'] = 'normal';
+        var layer_SFNewDiagnoses5yearcumulativecases_1 = new L.geoJson(json_SFNewDiagnoses5yearcumulativecases_1, {
+            attribution: '',
+            pane: 'pane_SFNewDiagnoses5yearcumulativecases_1',
+            onEachFeature: pop_SFNewDiagnoses5yearcumulativecases_1,
+            style: style_SFNewDiagnoses5yearcumulativecases_1_0,
+        });
+        bounds_group.addLayer(layer_SFNewDiagnoses5yearcumulativecases_1);
+        function pop_SFPrevalenceZIPCodeRate_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ZCTA5CE10'] !== null ? Autolinker.link(String(feature.properties['ZCTA5CE10'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AFFGEOID10'] !== null ? Autolinker.link(String(feature.properties['AFFGEOID10'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GEOID10'] !== null ? Autolinker.link(String(feature.properties['GEOID10'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ALAND10'] !== null ? Autolinker.link(String(feature.properties['ALAND10'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AWATER10'] !== null ? Autolinker.link(String(feature.properties['AWATER10'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Prevale'] !== null ? Autolinker.link(String(feature.properties['SF_Prevale'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva_1'] !== null ? Autolinker.link(String(feature.properties['SF_Preva_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva_2'] !== null ? Autolinker.link(String(feature.properties['SF_Preva_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva_3'] !== null ? Autolinker.link(String(feature.properties['SF_Preva_3'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva_4'] !== null ? Autolinker.link(String(feature.properties['SF_Preva_4'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva_5'] !== null ? Autolinker.link(String(feature.properties['SF_Preva_5'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva_6'] !== null ? Autolinker.link(String(feature.properties['SF_Preva_6'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva_7'] !== null ? Autolinker.link(String(feature.properties['SF_Preva_7'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva_8'] !== null ? Autolinker.link(String(feature.properties['SF_Preva_8'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva_9'] !== null ? Autolinker.link(String(feature.properties['SF_Preva_9'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva10'] !== null ? Autolinker.link(String(feature.properties['SF_Preva10'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva11'] !== null ? Autolinker.link(String(feature.properties['SF_Preva11'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva12'] !== null ? Autolinker.link(String(feature.properties['SF_Preva12'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva13'] !== null ? Autolinker.link(String(feature.properties['SF_Preva13'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva14'] !== null ? Autolinker.link(String(feature.properties['SF_Preva14'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva15'] !== null ? Autolinker.link(String(feature.properties['SF_Preva15'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva16'] !== null ? Autolinker.link(String(feature.properties['SF_Preva16'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva17'] !== null ? Autolinker.link(String(feature.properties['SF_Preva17'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva18'] !== null ? Autolinker.link(String(feature.properties['SF_Preva18'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva19'] !== null ? Autolinker.link(String(feature.properties['SF_Preva19'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva20'] !== null ? Autolinker.link(String(feature.properties['SF_Preva20'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva21'] !== null ? Autolinker.link(String(feature.properties['SF_Preva21'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva22'] !== null ? Autolinker.link(String(feature.properties['SF_Preva22'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva23'] !== null ? Autolinker.link(String(feature.properties['SF_Preva23'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva24'] !== null ? Autolinker.link(String(feature.properties['SF_Preva24'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva25'] !== null ? Autolinker.link(String(feature.properties['SF_Preva25'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva26'] !== null ? Autolinker.link(String(feature.properties['SF_Preva26'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva27'] !== null ? Autolinker.link(String(feature.properties['SF_Preva27'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva28'] !== null ? Autolinker.link(String(feature.properties['SF_Preva28'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva29'] !== null ? Autolinker.link(String(feature.properties['SF_Preva29'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva30'] !== null ? Autolinker.link(String(feature.properties['SF_Preva30'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva31'] !== null ? Autolinker.link(String(feature.properties['SF_Preva31'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva32'] !== null ? Autolinker.link(String(feature.properties['SF_Preva32'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva33'] !== null ? Autolinker.link(String(feature.properties['SF_Preva33'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva34'] !== null ? Autolinker.link(String(feature.properties['SF_Preva34'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva35'] !== null ? Autolinker.link(String(feature.properties['SF_Preva35'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva36'] !== null ? Autolinker.link(String(feature.properties['SF_Preva36'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva37'] !== null ? Autolinker.link(String(feature.properties['SF_Preva37'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva38'] !== null ? Autolinker.link(String(feature.properties['SF_Preva38'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SF_Preva39'] !== null ? Autolinker.link(String(feature.properties['SF_Preva39'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_SFPrevalenceZIPCodeRate_2_0(feature) {
+            if (feature.properties['SF_Preva_2'] >= -1.000000 && feature.properties['SF_Preva_2'] <= 1441.800000 ) {
+                return {
+                pane: 'pane_SFPrevalenceZIPCodeRate_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.75)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,0.75)',
+            }
+            }
+            if (feature.properties['SF_Preva_2'] >= 1441.800000 && feature.properties['SF_Preva_2'] <= 2884.600000 ) {
+                return {
+                pane: 'pane_SFPrevalenceZIPCodeRate_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.75)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,222,248,0.75)',
+            }
+            }
+            if (feature.properties['SF_Preva_2'] >= 2884.600000 && feature.properties['SF_Preva_2'] <= 4327.400000 ) {
+                return {
+                pane: 'pane_SFPrevalenceZIPCodeRate_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.75)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(144,188,240,0.75)',
+            }
+            }
+            if (feature.properties['SF_Preva_2'] >= 4327.400000 && feature.properties['SF_Preva_2'] <= 5770.200000 ) {
+                return {
+                pane: 'pane_SFPrevalenceZIPCodeRate_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.75)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(89,154,233,0.75)',
+            }
+            }
+            if (feature.properties['SF_Preva_2'] >= 5770.200000 && feature.properties['SF_Preva_2'] <= 7213.000000 ) {
+                return {
+                pane: 'pane_SFPrevalenceZIPCodeRate_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.75)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(33,120,225,0.75)',
+            }
+            }
+        }
+        map.createPane('pane_SFPrevalenceZIPCodeRate_2');
+        map.getPane('pane_SFPrevalenceZIPCodeRate_2').style.zIndex = 402;
+        map.getPane('pane_SFPrevalenceZIPCodeRate_2').style['mix-blend-mode'] = 'normal';
+        var layer_SFPrevalenceZIPCodeRate_2 = new L.geoJson(json_SFPrevalenceZIPCodeRate_2, {
+            attribution: '',
+            pane: 'pane_SFPrevalenceZIPCodeRate_2',
+            onEachFeature: pop_SFPrevalenceZIPCodeRate_2,
+            style: style_SFPrevalenceZIPCodeRate_2_0,
+        });
+        bounds_group.addLayer(layer_SFPrevalenceZIPCodeRate_2);
+        map.addLayer(layer_SFPrevalenceZIPCodeRate_2);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'SF Prevalence: ZIP Code Rate<br /><table><tr><td style="text-align: center;"><img src="legend/SFPrevalenceZIPCodeRate_2_114420.png" /></td><td> -1 - 1442 </td></tr><tr><td style="text-align: center;"><img src="legend/SFPrevalenceZIPCodeRate_2_144228851.png" /></td><td> 1442 - 2885 </td></tr><tr><td style="text-align: center;"><img src="legend/SFPrevalenceZIPCodeRate_2_288543272.png" /></td><td> 2885 - 4327 </td></tr><tr><td style="text-align: center;"><img src="legend/SFPrevalenceZIPCodeRate_2_432757703.png" /></td><td> 4327 - 5770 </td></tr><tr><td style="text-align: center;"><img src="legend/SFPrevalenceZIPCodeRate_2_577072134.png" /></td><td> 5770 - 7213 </td></tr></table>': layer_SFPrevalenceZIPCodeRate_2,'SF New Diagnoses: 5-year cumulative cases<br /><table><tr><td style="text-align: center;"><img src="legend/SFNewDiagnoses5yearcumulativecases_1_1360.png" /></td><td> -1 - 36 </td></tr><tr><td style="text-align: center;"><img src="legend/SFNewDiagnoses5yearcumulativecases_1_36731.png" /></td><td> 36 - 73 </td></tr><tr><td style="text-align: center;"><img src="legend/SFNewDiagnoses5yearcumulativecases_1_731092.png" /></td><td> 73 - 109 </td></tr><tr><td style="text-align: center;"><img src="legend/SFNewDiagnoses5yearcumulativecases_1_1091463.png" /></td><td> 109 - 146 </td></tr><tr><td style="text-align: center;"><img src="legend/SFNewDiagnoses5yearcumulativecases_1_1461834.png" /></td><td> 146 - 183 </td></tr></table>': layer_SFNewDiagnoses5yearcumulativecases_1,"OpenStreetMap": layer_OpenStreetMap_0,}).addTo(map);L.control.scale({position: 'bottomleft', maxWidth: 100, metric: true, imperial: false, updateWhenIdle: false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
